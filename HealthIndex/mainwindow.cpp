@@ -8,41 +8,37 @@
 #include <QHBoxLayout>
 #include <QMessageBox>
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {
     QWidget* centralWidget = new QWidget;
     setCentralWidget(centralWidget);
     QVBoxLayout* mainLayout = new QVBoxLayout;
-    centralWidget -> setLayout(mainLayout);
+    centralWidget->setLayout(mainLayout);
 
-    mainLayout -> addWidget(new QLabel("Введите вес:"));
+    mainLayout->addWidget(new QLabel("Введите вес:"));
     weightInput = new QLineEdit;
     weightInput->setPlaceholderText("кг");
-    mainLayout -> addWidget(weightInput);
+    mainLayout->addWidget(weightInput);
 
     QFrame* horizontalLine = new QFrame();
     horizontalLine->setFrameShape(QFrame::HLine);
     horizontalLine->setLineWidth(2);
-    mainLayout -> addWidget(horizontalLine);
+    mainLayout->addWidget(horizontalLine);
 
-    mainLayout -> addWidget(new QLabel("Введите рост:"));
+    mainLayout->addWidget(new QLabel("Введите рост:"));
     heightInput = new QLineEdit();
-
     heightInput->setPlaceholderText("см");
-    mainLayout -> addWidget(heightInput);
-
+    mainLayout->addWidget(heightInput);
 
     QFrame* horizontalLine1 = new QFrame();
     horizontalLine1->setFrameShape(QFrame::HLine);
     horizontalLine1->setLineWidth(2);
-    mainLayout -> addWidget(horizontalLine1);
+    mainLayout->addWidget(horizontalLine1);
 
     QFrame* horizontalLine2 = new QFrame();
     horizontalLine2->setFrameShape(QFrame::HLine);
     horizontalLine2->setLineWidth(2);
-    mainLayout -> addWidget(horizontalLine2);
+    mainLayout->addWidget(horizontalLine2);
 
     QPushButton* bmiButton = new QPushButton("Рассчитать ИМТ");
     mainLayout->addWidget(bmiButton);
@@ -50,18 +46,15 @@ MainWindow::MainWindow(QWidget *parent)
 
     bmiLabel = new QLabel("ИМТ:", this);
     answerLabel = new QLabel(this);
-
     mainLayout->addWidget(bmiLabel);
     mainLayout->addWidget(answerLabel);
-
-
-
 }
 
 MainWindow::~MainWindow()
 {
 }
-    void MainWindow::OnAddClicked()
+
+void MainWindow::OnAddClicked()
 {
     bool heightOk, weightOk;
     double height = heightInput->text().toDouble(&heightOk) / 100;
@@ -85,6 +78,4 @@ MainWindow::~MainWindow()
     else answer = "Ожирение 3-й степени";
 
     answerLabel->setText(answer);
-
 }
-
